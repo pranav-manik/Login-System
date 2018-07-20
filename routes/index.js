@@ -14,8 +14,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/register', function(req,res,next) {
 	//Check for errors
-	console.log(req.body);
-	req.check('email', 'Email not provided').isEmpty();
+	console.log(req.body.email);
 	req.check('email', 'Email not valid').isEmail();
 	req.check('password', 'Password to short or not provided').isLength( {min: 7} );
 
@@ -23,8 +22,7 @@ router.post('/register', function(req,res,next) {
 	//If errors send them
 	if (errors) {
 		res.send(errors);
-	}
-	else {
+	} else {
 		console.log("Success login");
 		res.send("Success login");
 	}
