@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login Page</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Bootstrap & JQuery-->
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <script src="javascripts/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--Hook up Stylesheets and Javascripts-->
+  <script type="text/javascript" src="javascripts/validator.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+
+<body>
+<center>
+  <!--Login Form-->
+	<form >
+    <h2><center>Login Page<br><h4>Please sign in to continue</h4></center></h2>
+      <hr>
+              <div class="container" id="SignUpPage">
+                <!--Email placeholder--->
+                <label for="email" id="modalText"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" id="email" required>
+
+                <!--Password placeholder--->
+                <label for="password" id="modalText"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="password" required>
+              
+
+                <!--Sign Up Button--->
+                <span class="sgnup">
+                  <button type="button" class= "btn btn-success popup" id=SignUpBtn onclick="SignUp()">Sign Up
+                  <span class="popuptext" id="sgnPopup"><center>Duplicate account,<br>you already have an <br>account under this email</center>
+                  </button>
+                </span>
+
+                <!--Login Button--->
+                <span class="lgin">
+                  <button type="submit" class= "btn btn-success popup" id=LoginBtn name="LoginBtn" value="Login" onclick="LoginValidator()">Login
+                    <span class="popuptext" id="lgnPopup">Wrong email or password
+                  </button>
+                </span>
+              </div>
+  </form>
+</center>
+
+</body>
+</html>
