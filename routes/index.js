@@ -22,6 +22,9 @@ router.post('/register', function(req,res,next) {
 	//If errors send them
 	if (errors) {
 		res.send(errors);
+		//res.render('index', { popSgnError : errors[0].msg });
+		console.log(errors[0].msg);
+//Otherwise Continue to Login
 	} else {
 		console.log("Success login");
 		res.send("Success login");
