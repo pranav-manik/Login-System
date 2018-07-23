@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,16 +15,17 @@ router.get('/', function(req, res, next) {
 
 router.post('/register', function(req,res,next) {
 	//Check for errors
-	console.log(req.body.email);
+	var UserData = {
+		email: req.body.email,
+		password: req.body.password
+	}
+	console.log(UserData);
 	req.check('email', 'Email not valid').isEmail();
 	req.check('password', 'Password to short or not provided').isLength( {min: 7} );
-
 	var errors = req.validationErrors();
 	//If errors send them
 	if (errors) {
 		res.send(errors);
-		//res.render('index', { popSgnError : errors[0].msg });
-		console.log(errors[0].msg);
 //Otherwise Continue to Login
 	} else {
 		console.log("Success login");

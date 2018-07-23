@@ -7,9 +7,17 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var expressValidator = require('express-validator');
 //var hbs = require('handlebars');
-//mongoose.connect('mongod://localhost/test');
+
+//mongoose setup
+/*mongoose.connect('mongod://localhost/logSys');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('mongoose connected');
+});*/
 
 
+//connect routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
