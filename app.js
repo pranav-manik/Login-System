@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var expressValidator = require('express-validator');
-//var hbs = require('handlebars');
+// var hbs = require('handlebars');
 
 //mongoose setup
 /*mongoose.connect('mongod://localhost/logSys');

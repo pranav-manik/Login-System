@@ -8,11 +8,20 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-/*router.post('/', function(req,res,next) {
-	if (req.body.SignUpBtn=="SignUp") {
-		res.redirect('/register');
+router.post('/validate', function(req,res,next) {
+	req.check('email', 'Email not valid').isEmail();
+	req.check('password', 'Password must be at least 7 characters').isLength( {min: 7} );
+	var errors = req.validationErrors();
+	//var errors = req.getValidationResult(req);
+	//If errors send them
+	if (errors) {
+		res.send(errors);
+//Otherwise Continue to Login
+	} else {
+		console.log("jumped to /register");
+		res.send({});
 	}
-});*/
+});
 
 router.post('/register', function(req,res,next) {
 	//Check for errors
@@ -21,21 +30,15 @@ router.post('/register', function(req,res,next) {
 		password: req.body.password
 	}
 	console.log(UserData);
-	req.check('email', 'Email not valid').isEmail();
-	req.check('password', 'Password to short or not provided').isLength( {min: 7} );
-	var errors = req.validationErrors();
-	//If errors send them
-	if (errors) {
-		res.send(errors);
-//Otherwise Continue to Login
-	} else {
-		console.log("Success login");
-		//res.send("Success login");
-		res.render('profile.hbs', {email: UserData.email});
-		//res.send("<body>Success login</body>");
-	}
+	res.render('profile', {email: UserData.email});
 
 });
 
+
+router.get('/profile', function(req,res,next) {
+	//res.send('<p> Success </p>');
+	console.log("profile called");
+	//res.render('profile');
+});
 
 module.exports = router;

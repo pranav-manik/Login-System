@@ -92,9 +92,9 @@ span.sgnup {
     padding-top: 16px;
 }
 
-.btn-danger {
+/*.btn-danger {
     width: 100px;
-}
+}*/
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
