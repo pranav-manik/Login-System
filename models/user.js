@@ -14,7 +14,7 @@ var UserSchema = new Schema({
 });
 
 
-UserSchema.method.checkPassword() = function(password) {
+/*UserSchema.method.checkPassword() = function(password) {
 	if (password == this.password) {
 		return true;
 	} else {
@@ -23,8 +23,8 @@ UserSchema.method.checkPassword() = function(password) {
 }
 
 UserSchema.method.authenticate() function(email, password) {
-	
-}
+
+}*/
 
 
 var User = mongoose.model('User', UserSchema);

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+//var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,7 +30,9 @@ router.post('/register', function(req,res,next) {
 //Otherwise Continue to Login
 	} else {
 		console.log("Success login");
-		res.send("Success login");
+		//res.send("Success login");
+		res.render('profile.hbs', {email: UserData.email});
+		//res.send("<body>Success login</body>");
 	}
 
 });

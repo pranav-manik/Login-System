@@ -10,9 +10,11 @@ function SignUp() {
 				errorNum++;
         	}
 		}
-		console.log(errorNum);
 		if (errorNum != noError) {
 			sgnPop(errors[0].msg);
+		}
+		else {
+			document.getElementById("SignUpBtn").type = "submit";
 		}
 	});
 }
