@@ -15,7 +15,14 @@ function SignUp() {
 			var html = errors
 			$.post('/register', form , function(html) {
 				console.log("register called client side");
-				document.write(html);
+				//If duplicate Account
+				if (html=="dupAccount") {
+					sgnPop("you already have an acount with this email");
+				}
+				//else continue to the registration process
+				else {
+					document.write(html);
+				}
 			});
 		}
 	});	

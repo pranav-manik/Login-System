@@ -29,18 +29,19 @@ router.post('/register', function(req,res,next) {
 		email: req.body.email,
 		password: req.body.password
 	}
+	console.log(UserData);
+	User.create( UserData, function(err, user) {
+		if (err) {
+			console.log("error in mongo");
+			//next(err);
+			res.send("dupAccount");
+		}
+		else {
+			console.log("success in mongo");
+			res.render('profile', {email: UserData.email});
+		}
+	});
 	res.render('profile', {email: UserData.email});
-	// User.Create( UserData, function(err, user) {
-	// 	if (err) {
-	// 		next(err);
-	// 	}
-	// 	else {
-	// 		//Add to user
-	// 	}
-
-	// });
-	// console.log(UserData);
-	// res.render('profile', {email: UserData.email});
 
 });
 
