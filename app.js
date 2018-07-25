@@ -9,12 +9,12 @@ var expressValidator = require('express-validator');
 // var hbs = require('handlebars');
 
 //mongoose setup
-/*mongoose.connect('mongod://localhost/logSys');
+mongoose.connect('mongodb://localhost/logSys');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('mongoose connected');
-});*/
+});
 
 
 //connect routers

@@ -7,6 +7,7 @@ function SignUp() {
 		console.log(errors.length);
 		//if there are errors
 		if (errors.length <= 2) {
+			console.log(errors);
 			sgnPop(errors[0].msg);
 		}
 		//continues registering process if no errors
@@ -22,16 +23,23 @@ function SignUp() {
 
 
 function sgnPop(msg) {
-      //var popup = $('#SignUpBtn');
-      //var printError = document.getElementById("possibleErrors").innerHTML = msg;
-      var popup = document.getElementById("sgnPopup");
-      popup.data-content=msg;
-      //popup.innerHTML = msg;
-      console.log(popup);
-      //popup.classList.toggle("show");
+	//Initializes popup with error message
+    // console.log("msg: " + msg);
+	$(document).ready(function(){
+	$('[data-toggle="popover"]').popover(); 
+	$('.popover-dismiss').popover({ trigger: 'focus'});
+	$('#SignUpBtn').attr('data-content',msg);
+	$('#SignUpBtn').popover('show');
+	// console.log("msg: " + msg);
+		$('#SignUpBtn').on('mouseout', function(){
+			$(this).popover('hide');
+			$(this).attr('data-content',msg);
+			$(this).popover('show');
+		});
+	});
 }
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('[data-toggle="popover"]').popover();
     $('.popover-dismiss').popover({ trigger: 'focus'});
-});
+});*/
