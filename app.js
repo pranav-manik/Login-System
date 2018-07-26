@@ -33,7 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
-//app.use(session( {secret: 'do-more', }));
+// app.use(session({secret: 'work-harder', 
+// 				saveUninitialized: true,
+// 				resave: true}));
 
 
 

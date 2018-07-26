@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+
+
+//Validator Route
 router.post('/validate', function(req,res,next) {
 	req.check('email', 'Email not valid').isEmail();
 	req.check('password', 'Password must be at least 7 characters').isLength( {min: 7} );
@@ -23,6 +26,8 @@ router.post('/validate', function(req,res,next) {
 	}
 });
 
+
+//Register Route
 router.post('/register', function(req,res,next) {
 	//Check for errors
 	var UserData = {
@@ -33,19 +38,20 @@ router.post('/register', function(req,res,next) {
 	User.create( UserData, function(err, user) {
 		if (err) {
 			console.log("error in mongo");
-			//next(err);
 			res.send("dupAccount");
 		}
 		else {
 			console.log("success in mongo");
+			console.log("user id " + user._id);
+			//res.redirect('/profile');
 			res.render('profile', {email: UserData.email});
 		}
 	});
-	res.render('profile', {email: UserData.email});
-
 });
 
 
+
+//Profile route
 router.get('/profile', function(req,res,next) {
 	//res.send('<p> Success </p>');
 	console.log("profile called");
