@@ -1,6 +1,6 @@
 # Login System
 
-This is a Login System based off of my previous app (AuthApp) one that could in real time display Login
+This is a Login System based off of my previous app (AuthApp) one that could in real time display login errors
 to the client in real time rather than loading new pages, a Login system that was secure and would save user sessions
 Hope you guys enjoy
 
