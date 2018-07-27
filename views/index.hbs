@@ -1,6 +1,5 @@
-
+<title>Login Page</title>
 <head>
-	<title>Login Page</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--Bootstrap & JQuery-->
@@ -19,7 +18,6 @@
   <!--Login Form-->
 	<form id=LoginForm>
     <h2><center>Login Page<br><h4>Please sign in to continue</h4></center></h2>
-    <p id=possibleErrors style="color: red;"></p>
       <hr>
               <div class="container" id="SignUpPage">
                 <!--Email placeholder--->
@@ -30,21 +28,18 @@
                 <label for="password" id="modalText"><b>Password</b></label>
                 <input type="password" placeholder="Password" id="password" name="password" required>
               
-
+                <br><br><br>
                 <!--Sign Up Button--->
                 <span class="sgnup">
-                  <!--<button type="button" class= "btn btn-success popup" id=SignUpBtn onclick="SignUp()" >Sign Up
-                  <span class="popuptext" id="sgnPopup"></span>
-                  </button>-->
                   <a tabindex="0" id="SignUpBtn" class="btn btn-success" role="button" data-placement="top" data-toggle="popover" data-trigger="focus" data-content="pop"  onclick="SignUp()">Sign Up</a>
-
                 </span>
 
                 <!--Login Button--->
                 <span class="lgin">
-                  <button type="button" class= "btn btn-success popup" id=LoginBtn name="LoginBtn" value="Login" onclick="LoginValidator()">Login
+                  <!--<button type="button" class= "btn btn-success popup" id=LoginBtn name="LoginBtn" value="Login" onclick="LoginValidator()">Login
                     <span class="popuptext" id="lgnPopup"></span>
-                  </button>
+                  </button>-->
+                  <a tabindex="0" id="LoginBtn" class="btn btn-success" role="button" data-placement="top" data-toggle="popover" data-trigger="focus" data-content="pop"  onclick="Login()">Login</a>
                 </span>
               </div>
   </form>

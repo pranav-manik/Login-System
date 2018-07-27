@@ -1,5 +1,8 @@
 $(document).ready( function() {
 
+
+console.log("If you think your gonna hack this page you might as well give up right now");
+
 console.log("           __");
 console.log(".-.__      \\ .-.  ___  __");
 console.log("|_|  '--.-.-(   \\/\\;;\\_\\.-._______.-.");

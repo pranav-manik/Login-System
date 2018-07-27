@@ -1,11 +1,12 @@
 {
-  "name": "authentification_app2",
+  "name": "login_system",
   "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",

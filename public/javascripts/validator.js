@@ -30,22 +30,45 @@ function SignUp() {
 }
 
 
+function Login() {
+	var form = $('#LoginForm').serialize();
+	$.post('/login', form , function SignUpHandler(errors) {
+		console.log(JSON.stringify(errors));
+
+		if (errors=="LoginError") {
+			lgnPop("Email not found or incorrect Password");
+		}
+		else {
+			document.write(errors);
+		}
+	});
+}
 
 
-//for error popups
+
+//for Sign Up errors
 function sgnPop(msg) {
-	//Initializes popup with error message
+	//Initializes Sign Up popup with error message
     // console.log("msg: " + msg);
 	$(document).ready(function(){
 	$('[data-toggle="popover"]').popover(); 
 	$('.popover-dismiss').popover({ trigger: 'focus'});
+	$('#SignUpBtn').popover('hide');
 	$('#SignUpBtn').attr('data-content',msg);
 	$('#SignUpBtn').popover('show');
-		$('#SignUpBtn').on('mouseout', function(){
-			$(this).popover('hide');
-			$(this).attr('data-content',msg);
-			$(this).popover('show');
-		});
+	});
+}
+
+//For Login errors
+function lgnPop(msg) {
+	//Initializes Login popup with error message
+    // console.log("msg: " + msg);
+	$(document).ready(function(){
+	$('[data-toggle="popover"]').popover(); 
+	$('.popover-dismiss').popover({ trigger: 'focus'});
+	$('#LoginBtn').popover('hide');
+	$('#LoginBtn').attr('data-content',msg);
+	$('#LoginBtn').popover('show');
 	});
 }
 

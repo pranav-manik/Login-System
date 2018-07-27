@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -14,18 +15,37 @@ var UserSchema = new Schema({
 });
 
 
-/*UserSchema.method.checkPassword() = function(password) {
-	if (password == this.password) {
-		return true;
-	} else {
-		return false;
-	}
+UserSchema.statics.authenticate = function(email, password, callback) {
+	//Finds email
+	User.findOne({ email: email }).exec(function(err, user) {
+		//finds  doesnt find email
+		if (!user) {
+			console.log("cant find user");
+			return callback();
+		}
+		//finds password
+		bcrypt.compare(password, user.password, function(err, result) {
+		if (result == true) {
+			return callback(null, user);
+		} else {
+			return callback();
+		}
+	  });
+	});
 }
 
-UserSchema.method.authenticate() function(email, password) {
 
-}*/
-
+//for hashing password
+UserSchema.pre('save', function(next) {
+	var user = this;
+	bcrypt.hash(user.password, 10, function(err, hash){
+		if (err) {
+			return next(err);
+		}
+		user.password = hash;
+		next();
+	})
+});
 
 var User = mongoose.model('User', UserSchema);
 
