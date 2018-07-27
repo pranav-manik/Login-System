@@ -5,7 +5,6 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log("mainpage session: " + JSON.stringify(req.session));
 	if (!req.session.user) {
   		res.render('index');
   	}
@@ -39,15 +38,12 @@ router.post('/register', function(req,res,next) {
 		email: req.body.email,
 		password: req.body.password
 	}
-	console.log(UserData);
 	User.create( UserData, function(err, user) {
 		if (err) {
 			res.send("dupAccount");
 		}
 		else {
-			console.log("user id " + user._id);
 			req.session.user = user;
-			console.log("req session: " + JSON.stringify(req.session));
 			res.redirect('/profile');
 			//res.render('profile', {email: req.session.user.email});
 		}
@@ -60,7 +56,6 @@ router.post('/login' , function(req, res, next) {
 		loginPassword: req.body.password
 	}
 	User.authenticate(UserData.loginEmail, UserData.loginPassword, function(error, user) {
-		console.log("LoginError");
 		//if email or password wrong
 		if (error) {
 			res.send("LoginError");
@@ -80,7 +75,6 @@ router.post('/login' , function(req, res, next) {
 //Profile route
 router.get('/profile', function(req,res,next) {
 	//res.send('<p> Success </p>');
-	console.log("user session: " + JSON.stringify(req.session.user));
 	if (req.session.user) {
 		res.render('profile', {email: req.session.user.email});
 	}
@@ -93,7 +87,6 @@ router.get('/profile', function(req,res,next) {
 //Logout Route
 router.get('/logout', function(req,res,next) {
 	req.session.destroy();
-	console.log("req session: " + req.session);
 	res.redirect('/');
 });
 

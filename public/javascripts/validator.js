@@ -3,7 +3,6 @@ function SignUp() {
 
 	//for validating and if errors come
 	$.post('/validate', form , function SignUpHandler(errors) {
-		console.log(JSON.stringify(errors));
 		//if there are errors
 		var maxErrors = 2;
 		if (errors.length <= maxErrors) {
