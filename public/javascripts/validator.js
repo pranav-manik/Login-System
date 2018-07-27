@@ -4,11 +4,9 @@ function SignUp() {
 	//for validating and if errors come
 	$.post('/validate', form , function SignUpHandler(errors) {
 		console.log(JSON.stringify(errors));
-		console.log(errors.length);
 		//if there are errors
 		var maxErrors = 2;
 		if (errors.length <= maxErrors) {
-			console.log(errors);
 			sgnPop(errors[0].msg);
 		}
 		//continues registering process if no errors
@@ -33,11 +31,11 @@ function SignUp() {
 function Login() {
 	var form = $('#LoginForm').serialize();
 	$.post('/login', form , function SignUpHandler(errors) {
-		console.log(JSON.stringify(errors));
-
+		//for error
 		if (errors=="LoginError") {
 			lgnPop("Email not found or incorrect Password");
 		}
+		//otherwise continue login
 		else {
 			document.write(errors);
 		}
@@ -71,8 +69,3 @@ function lgnPop(msg) {
 	$('#LoginBtn').popover('show');
 	});
 }
-
-/*$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-    $('.popover-dismiss').popover({ trigger: 'focus'});
-});*/

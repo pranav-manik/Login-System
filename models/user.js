@@ -20,7 +20,6 @@ UserSchema.statics.authenticate = function(email, password, callback) {
 	User.findOne({ email: email }).exec(function(err, user) {
 		//finds  doesnt find email
 		if (!user) {
-			console.log("cant find user");
 			return callback();
 		}
 		//finds password

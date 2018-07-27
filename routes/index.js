@@ -27,7 +27,6 @@ router.post('/validate', function(req,res,next) {
 		res.send(errors);
 //Otherwise Continue to Login
 	} else {
-		console.log("jumped to /register");
 		res.send({});
 	}
 });
@@ -43,11 +42,9 @@ router.post('/register', function(req,res,next) {
 	console.log(UserData);
 	User.create( UserData, function(err, user) {
 		if (err) {
-			console.log("error in mongo");
 			res.send("dupAccount");
 		}
 		else {
-			console.log("success in mongo");
 			console.log("user id " + user._id);
 			req.session.user = user;
 			console.log("req session: " + JSON.stringify(req.session));
@@ -66,16 +63,13 @@ router.post('/login' , function(req, res, next) {
 		console.log("LoginError");
 		//if email or password wrong
 		if (error) {
-			console.log("calling login error");
 			res.send("LoginError");
 		}
 		else if (!user) {
-			console.log("calling no user");
 			res.send("LoginError");
 		}
 		//Continues login process
 		else {
-			console.log("calling profile");
 			req.session.user = user;
 			res.redirect('/profile');
 		}
@@ -86,7 +80,6 @@ router.post('/login' , function(req, res, next) {
 //Profile route
 router.get('/profile', function(req,res,next) {
 	//res.send('<p> Success </p>');
-	console.log("profile called");
 	console.log("user session: " + JSON.stringify(req.session.user));
 	if (req.session.user) {
 		res.render('profile', {email: req.session.user.email});
@@ -100,9 +93,7 @@ router.get('/profile', function(req,res,next) {
 //Logout Route
 router.get('/logout', function(req,res,next) {
 	req.session.destroy();
-	console.log("session destroyed");
 	console.log("req session: " + req.session);
-	console.log("profile called");
 	res.redirect('/');
 });
 
